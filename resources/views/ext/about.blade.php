@@ -1,6 +1,6 @@
 @extends('layouts.ext')
 
-@section('title', ' - Tentang dontpushpush.com')
+@section('title', 'Tentang dontpushpush.com - ')
 
 @section('style')
 @endsection

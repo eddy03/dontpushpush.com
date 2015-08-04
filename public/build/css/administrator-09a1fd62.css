@@ -8284,131 +8284,142 @@ button.close {
 .fa-medium:before {
   content: "\f23a";
 }
-/*----------------------------------------------------------------------------*\
-  Headhesive Specific Styles
-/*----------------------------------------------------------------------------*/
-/**
- * Headhesive element clone
- * > `clone` class for the cloned element:
+/*
+ * metismenu - v2.0.2
+ * A jQuery menu plugin
+ * https://github.com/onokumus/metisMenu
  *
- * @example
- * var options = {
- *   classes {
- *     clone: 'banner--clone';
- *   }
- * }
+ * Made by Osman Nuri Okumus
+ * Under MIT License
  */
-.banner--clone {
-  /* Required styles */
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  /* Additional styles */
-  background: #c95a5d;
-  /* Translate -100% to move off screen */
-  -webkit-transform: translateY(-100%);
-  -ms-transform: translateY(-100%);
-  transform: translateY(-100%);
-  /* Animations */
-  transition: all 300ms ease-in-out;
+.metismenu .arrow {
+  float: right;
+  line-height: 1.42857;
 }
-/**
- * Headhesive stick
- * > `stick` class for the cloned element:
- *
- * @example
- * var options = {
- *   classes {
- *     stick: 'banner--stick';
- *   }
- * }
- */
-.banner--stick {
-  /* Translate back to 0%; */
-  -webkit-transform: translateY(0%);
-  -ms-transform: translateY(0%);
-  transform: translateY(0%);
+/*
+ * Require Bootstrap
+ * https://github.com/twbs/bootstrap
+*/
+.metismenu .glyphicon.arrow:before {
+  content: "\e079";
 }
-/**
- * Headhesive unstick
- * > `unstick` class for the cloned element:
- *
- * @example
- * var options = {
- *   classes {
- *     unstick: 'banner--unstick';
- *   }
- * }
- */
-.banner--unstick {
-  /* Not required to use, but could be useful to have */
+.metismenu .active > a > .glyphicon.arrow:before {
+  content: "\e114";
 }
-/*----------------------------------------------------------------------------*\
-  Headhesive Specific Styles
-/*----------------------------------------------------------------------------*/
-/**
- * Headhesive element clone
- * > `clone` class for the cloned element:
- *
- * @example
- * var options = {
- *   classes {
- *     clone: 'banner--clone';
- *   }
- * }
- */
-.banner--clone {
-  /* Required styles */
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  /* Additional styles */
-  background: #c95a5d;
-  /* Translate -100% to move off screen */
-  -webkit-transform: translateY(-100%);
-  -ms-transform: translateY(-100%);
-  transform: translateY(-100%);
-  /* Animations */
-  transition: all 300ms ease-in-out;
+/*
+ * Require Font-Awesome
+ * http://fortawesome.github.io/Font-Awesome/
+*/
+.metismenu .fa.arrow:before {
+  content: "\f104";
 }
-/**
- * Headhesive stick
- * > `stick` class for the cloned element:
- *
- * @example
- * var options = {
- *   classes {
- *     stick: 'banner--stick';
- *   }
- * }
- */
-.banner--stick {
-  /* Translate back to 0%; */
-  -webkit-transform: translateY(0%);
-  -ms-transform: translateY(0%);
-  transform: translateY(0%);
+.metismenu .active > a > .fa.arrow:before {
+  content: "\f107";
 }
-/**
- * Headhesive unstick
- * > `unstick` class for the cloned element:
- *
- * @example
- * var options = {
- *   classes {
- *     unstick: 'banner--unstick';
- *   }
- * }
- */
-.banner--unstick {
-  /* Not required to use, but could be useful to have */
+/*
+ * Require Ionicons
+ * http://ionicons.com/
+*/
+.metismenu .ion.arrow:before {
+  content: "\f3d2";
+}
+.metismenu .active > a > .ion.arrow:before {
+  content: "\f3d0";
+}
+.metismenu .plus-times {
+  float: right;
+}
+.metismenu .fa.plus-times:before {
+  content: "\f067";
+}
+.metismenu .active > a > .fa.plus-times {
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.metismenu .plus-minus {
+  float: right;
+}
+.metismenu .fa.plus-minus:before {
+  content: "\f067";
+}
+.metismenu .active > a > .fa.plus-minus:before {
+  content: "\f068";
+}
+.metismenu .collapse {
+  display: none;
+}
+.metismenu .collapse.in {
+  display: block;
+}
+.metismenu .collapsing {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  transition-timing-function: ease;
+  transition-duration: .35s;
+  transition-property: height, visibility;
 }
 body {
-  font-size: 14px;
+  padding-top: 60px;
 }
-.navbar-static-top {
-  margin-bottom: 19px;
+.top-left-nav > i {
+  margin-right: 5px;
+}
+.page-header {
+  margin: 0px;
+}
+.page-header > h2 {
+  margin: 0px;
+}
+.panel .slidedown .glyphicon,
+.chat .glyphicon {
+  margin-right: 5px;
+}
+.huge {
+  font-size: 40px;
+}
+.panel-green {
+  border-color: #5cb85c;
+}
+.panel-green .panel-heading {
+  border-color: #5cb85c;
+  color: #fff;
+  background-color: #5cb85c;
+}
+.panel-green a {
+  color: #5cb85c;
+}
+.panel-green a:hover {
+  color: #3d8b3d;
+}
+.panel-red {
+  border-color: #d9534f;
+}
+.panel-red .panel-heading {
+  border-color: #d9534f;
+  color: #fff;
+  background-color: #d9534f;
+}
+.panel-red a {
+  color: #d9534f;
+}
+.panel-red a:hover {
+  color: #b52b27;
+}
+.panel-yellow {
+  border-color: #f0ad4e;
+}
+.panel-yellow .panel-heading {
+  border-color: #f0ad4e;
+  color: #fff;
+  background-color: #f0ad4e;
+}
+.panel-yellow a {
+  color: #f0ad4e;
+}
+.panel-yellow a:hover {
+  color: #df8a13;
 }
 
-/*# sourceMappingURL=app.css.map */
+/*# sourceMappingURL=administrator.css.map */

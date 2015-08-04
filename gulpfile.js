@@ -12,10 +12,12 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
- mix.less('app.less')
-     .copy('resources/bower_components/jquery/dist/jquery.js', 'resources/assets/js/jquery.js')
-     .copy('resources/bower_components/bootstrap/dist/js/bootstrap.js', 'resources/assets/js/bootstrap.js')
-     .copy('resources/bower_components/headhesive/dist/headhesive.js', 'resources/assets/js/headhesive.js')
-     .scripts(['ie10-viewport-bug-workaround.js', 'jquery.js', 'bootstrap.js', 'headhesive.js' ])
-     .version(['css/app.css', 'js/all.js']);
+    mix.less('app.less')
+        .less('administrator.less')
+        .copy('resources/bower_components/jquery/dist/jquery.js', 'resources/assets/js/jquery.js')
+        .copy('resources/bower_components/bootstrap/dist/js/bootstrap.js', 'resources/assets/js/bootstrap.js')
+        .copy('resources/bower_components/headhesive/dist/headhesive.js', 'resources/assets/js/headhesive.js')
+        .copy('resources/bower_components/metisMenu/dist/metisMenu.js', 'resources/assets/js/metisMenu.js')
+        .scripts(['ie10-viewport-bug-workaround.js', 'jquery.js', 'bootstrap.js', 'headhesive.js', 'metisMenu.js' ])
+        .version(['css/app.css', 'css/administrator.css', 'js/all.js']);
 });

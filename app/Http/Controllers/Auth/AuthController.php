@@ -22,6 +22,10 @@ class AuthController extends Controller
 
     use AuthenticatesAndRegistersUsers;
 
+    protected $redirectPath = '/administrator';
+
+    protected $loginPath = '/auth';
+
     /**
      * Create a new authentication controller instance.
      *

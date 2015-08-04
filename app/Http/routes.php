@@ -9,10 +9,13 @@ Route::group(['namespace' => 'Ext'], function() {
 
     Route::get('about', ['as' => 'about', 'uses' => 'HomepageController@about']);
 
-    Route::get('auth', ['as' => 'login', 'uses' => 'HomepageController@authenticate']);
+    Route::get('auth', ['as' => 'login', 'uses' => 'HomepageController@login']);
+
+    Route::post('auth', ['as' => 'authenticated', 'uses' => 'HomepageController@authenticate']);
 
 });
 
+//Special page
 Route::group(['namespace' => 'Special'], function() {
 
     //Jemputan kahwin
@@ -20,8 +23,11 @@ Route::group(['namespace' => 'Special'], function() {
 
 });
 
-Route::group(['namespace' => 'Administrator', 'prefix' => 'administrator'], function() {
+//Administration
+Route::group(['namespace' => 'Administrator', 'middleware' => 'auth', 'prefix' => 'administrator'], function() {
 
     Route::get('/', ['as' => 'dashboard', 'uses' => 'DashboardController@dashboard']);
+
+    Route::get('logout', ['as' => 'logout', 'uses' => 'DashboardController@logout']);
 
 });

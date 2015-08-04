@@ -11,7 +11,7 @@
         <title>@yield('title')dontpushpush.com</title>
 
         <!-- Main compiled stylesheet -->
-        <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
+        <link href="{{ elixir('css/administrator.css') }}" rel="stylesheet">
 
         <!-- specific page stylesheet -->
         @yield('style')
@@ -25,9 +25,8 @@
     </head>
 
     <body>
-
-        <nav class="navbar navbar-default navbar-static-top header">
-            <div class="container">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                         <span class="sr-only">Toggle navigation</span>
@@ -35,42 +34,22 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/">dontpushpush</a>
+                    <a class="navbar-brand" href="#">dontpushpush</a>
                 </div>
-                <div id="navbar" class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li id="menu_utama"><a href="/">Utama</a></li>
-                        <li id="menu_artikel"><a href="{{ route('viewarticle') }}">Artikel</a></li>
-                        <li id="menu_tentang"><a href="{{ route('about') }}">Tentang</a></li>
-                        <li><a href="{{ route('special.kahwin') }}">Kahwin</a></li>
-                    </ul>
-                </div><!--/.nav-collapse -->
+                <div id="navbar" class="navbar-collapse collapse">
+                    @include('administrator.partial_menu')
+                </div>
             </div>
         </nav>
 
-        <div class="container">
-
+        <div class="container-fluid">
             @yield('content')
-
-        </div><!-- /.container -->
-
+        </div>
 
         <!-- Bootstrap core JavaScript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="{{ elixir('js/all.js') }}"></script>
         @yield('script')
-        <script>
-            // Set options
-            var options = {
-                classes: {
-                    clone:   'banner--clone',
-                    stick:   'banner--stick',
-                    unstick: 'banner--unstick'
-                }
-            };
-
-            var header = new Headhesive('.header', options);
-        </script>
     </body>
 </html>
