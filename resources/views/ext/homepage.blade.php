@@ -72,6 +72,6 @@
 
         <!-- content for about dontpushpush.com -->
         <div class="content" id="tentang">
-            <code>In Development</code>
+            <code>Sorry, This part is still in development</code>
         </div>
 @endsection
