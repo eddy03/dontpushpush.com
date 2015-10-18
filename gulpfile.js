@@ -41,7 +41,7 @@ elixir(function(mix) {
         //Compile JS file according to specific user target
         .scripts(['ie10-viewport-bug-workaround.js', 'jquery.js', 'vue.js', 'bootstrap.js', 'marked.js', 'lightbox.js', 'prism.js', 'autosize.js', 'selectize.js', 'bootbox.js', 'lodash.js'], 'public/js/administrator.js')
         .scripts(['article.js'], 'public/js/article.js')
-        .scripts(['ie10-viewport-bug-workaround.js', 'jquery.js', 'vue.js', 'bootstrap.js', 'marked.js', 'lightbox.js', 'prism.js', 'headhesive.js', 'director.js'], 'public/js/app.js')
+        .scripts(['ie10-viewport-bug-workaround.js', 'jquery.js', 'vue.js', 'bootstrap.js', 'marked.js', 'lightbox.js', 'prism.js', 'headhesive.js', 'director.js', 'app.js'], 'public/js/app.js')
 
         //Mixing the css files
         .styles(['lightbox.css', 'prism.css', 'administrator.css'], 'public/css/admin.css', 'public/css')
