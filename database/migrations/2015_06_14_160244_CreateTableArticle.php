@@ -14,12 +14,14 @@ class CreateTableArticle extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('images', 400);
             $table->string('subject', 500);
-            $table->string('url', 300);
+            $table->string('url', 200);
             $table->text('snippet');
-            $table->text('filename', 200);
+            $table->text('filename', 300);
             $table->boolean('is_publish');
             $table->dateTime('publish_at');
+            $table->integer('total_click')->unsign();
             $table->timestamps();
         });
     }
@@ -31,6 +33,6 @@ class CreateTableArticle extends Migration
      */
     public function down()
     {
-        Schema::drop('article');
+        Schema::drop('articles');
     }
 }

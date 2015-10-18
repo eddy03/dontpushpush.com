@@ -11,7 +11,7 @@
         <title>@yield('title')dontpushpush.com</title>
 
         <!-- Main compiled stylesheet -->
-        <link href="{{ elixir('css/administrator.css') }}" rel="stylesheet">
+        <link href="{{ elixir('css/admin.css') }}" rel="stylesheet">
 
         <!-- specific page stylesheet -->
         @yield('style')
@@ -34,7 +34,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">dontpushpush</a>
+                    <a class="navbar-brand" href="{{ route('dashboard') }}">dontpushpush</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     @include('administrator.partial_menu')
@@ -49,7 +49,46 @@
         <!-- Bootstrap core JavaScript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
-        <script src="{{ elixir('js/all.js') }}"></script>
+        <script src="{{ elixir('js/administrator.js') }}"></script>
+        <script>
+            (function($) {
+                $.fn.getCursorPosition = function() {
+                    var input = this.get(0);
+                    if (!input) return; // No (input) element found
+                    if ('selectionStart' in input) {
+                        // Standard-compliant browsers
+                        return input.selectionStart;
+                    } else if (document.selection) {
+                        // IE
+                        input.focus();
+                        var sel = document.selection.createRange();
+                        var selLen = document.selection.createRange().text.length;
+                        sel.moveStart('character', -input.value.length);
+                        return sel.text.length - selLen;
+                    }
+                }
+
+                $.fn.selectRange = function(start, end) {
+                    if(typeof end === 'undefined') {
+                        end = start;
+                    }
+                    return this.each(function() {
+                        if('selectionStart' in this) {
+                            this.selectionStart = start;
+                            this.selectionEnd = end;
+                        } else if(this.setSelectionRange) {
+                            this.setSelectionRange(start, end);
+                        } else if(this.createTextRange) {
+                            var range = this.createTextRange();
+                            range.collapse(true);
+                            range.moveEnd('character', end);
+                            range.moveStart('character', start);
+                            range.select();
+                        }
+                    });
+                };
+            })(jQuery);
+        </script>
         @yield('script')
     </body>
 </html>
