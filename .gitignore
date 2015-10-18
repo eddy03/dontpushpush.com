@@ -2,3 +2,5 @@
 /node_modules
 /resources/bower_components
 .env
+.idea/codeStyleSettings.xml
+.idea/dictionaries/eddydyla.xml
