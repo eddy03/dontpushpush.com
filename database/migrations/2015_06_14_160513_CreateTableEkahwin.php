@@ -29,6 +29,6 @@ class CreateTableEkahwin extends Migration
      */
     public function down()
     {
-        Schema::drop('ekhawin');
+        Schema::drop('ekhawins');
     }
 }

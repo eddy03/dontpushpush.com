@@ -1,6 +1,6 @@
 @extends('layouts.ext')
 
-@section('title', ' - ' . $article_title)
+@section('title', $article_title . ' - ')
 
 @section('style')
 @endsection
