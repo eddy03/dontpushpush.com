@@ -76,6 +76,7 @@
                         window.location.reload();
                     }
                     else {
+                        console.log(data);
                         alert('Error');
                     }
                 });
