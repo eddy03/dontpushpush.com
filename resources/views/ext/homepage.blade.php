@@ -72,6 +72,13 @@
 
         <!-- content for about dontpushpush.com -->
         <div class="content" id="tentang">
-            <code>Sorry, This part is still in development</code>
+            <div class="row">
+                <div class="col-sm-9">
+                    <code>Sorry, This part is still in development</code>
+                </div>
+                <div class="col-sm-3">
+                    @include('ext.sidebar')
+                </div>
+            </div>
         </div>
 @endsection
