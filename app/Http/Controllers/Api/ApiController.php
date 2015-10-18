@@ -38,7 +38,9 @@ class ApiController extends Controller
 
     public function githubpush(Request $request) {
 
-        return array($request->ref);
+        $exec = exec('git pull');
+
+        return array('ref' => $request->ref, 'exec' => $exec);
 
     }
 
