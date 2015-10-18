@@ -38,7 +38,7 @@
                         </a>
                     </div>
 
-                    <div class="text-center paging-block">
+                    <div class="text-center paging-block" v-show="articles.last_page > 1">
                         <nav>
                             <ul class="pagination">
                                 <li v-show="articles.current_page != 1">
