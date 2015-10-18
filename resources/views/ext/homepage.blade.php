@@ -72,7 +72,6 @@
 
         <!-- content for about dontpushpush.com -->
         <div class="content" id="tentang">
-            Tentang dontpushpush.com<br />
-            *Development
+            Tentang dontpushpush.com
         </div>
 @endsection
