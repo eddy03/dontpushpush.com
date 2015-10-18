@@ -36,9 +36,9 @@ class ApiController extends Controller
         return $article;
     }
 
-    public function githubpush() {
+    public function githubpush(Request $request) {
 
-        return array('success' => true, 'msg' => 'Message Received');
+        return array($request->ref);
 
     }
 
