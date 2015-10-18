@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use SSH;
 
 /**
  * Class HomepageController
@@ -61,6 +62,14 @@ class HomepageController extends Controller
         else {
             return redirect('auth');
         }
+
+    }
+
+    public function test() {
+
+        SSH::run([
+            'hostname',
+        ]);
 
     }
 }

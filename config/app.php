@@ -149,6 +149,7 @@ return [
          * External Service Providers...
          */
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        Collective\Remote\RemoteServiceProvider::class,
 
     ],
 
@@ -199,6 +200,7 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
         'Html'      => Illuminate\Html\HtmlFacade::class,
         'Form'      => Illuminate\Html\FormFacade::class,
+        'SSH' => Collective\Remote\RemoteFacade::class,
 
     ],
 
