@@ -64,12 +64,4 @@ class HomepageController extends Controller
         }
 
     }
-
-    public function test() {
-
-        SSH::run([
-            'hostname',
-        ]);
-
-    }
 }

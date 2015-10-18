@@ -38,9 +38,10 @@ class ApiController extends Controller
 
     public function githubpush(Request $request) {
 
-        $exec = shell_exec('git pull');
-
-        return array('ref' => $request->ref, 'exec' => $exec);
+        SSH::run([
+            'cd /www/web/dontpushpush',
+            'git pull',
+        ]);
 
     }
 

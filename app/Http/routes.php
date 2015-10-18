@@ -18,8 +18,6 @@ Route::group(['namespace' => 'Ext'], function() {
     //Processing the login page
     Route::post('auth', ['as' => 'authenticated', 'uses' => 'HomepageController@authenticate']);
 
-    Route::get('test', ['as' => 'test', 'uses' => 'HomepageController@test']);
-
 });
 
 //Public API
