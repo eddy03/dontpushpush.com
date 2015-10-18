@@ -24,6 +24,8 @@ class DocumentController extends Controller
 
         if($request->ajax()) {
 
+            $ajaxFile = [];
+
             foreach($files as $file) {
                 $ajaxFile[] = asset($documentPath . str_replace($path, '', $file));
             }
