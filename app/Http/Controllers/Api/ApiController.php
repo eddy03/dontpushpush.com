@@ -42,7 +42,10 @@ class ApiController extends Controller
         SSH::run([
             'cd /www/web/dontpushpush',
             'git pull',
-        ]);
+        ], function($line)
+        {
+            echo $line.PHP_EOL;
+        });
 
     }
 
