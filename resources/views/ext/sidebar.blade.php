@@ -1,6 +1,6 @@
-<button class="btn btn-default btn-block">
+<a href="https://github.com/eddy03/dontpushpush.com/" class="btn btn-default btn-block">
     <i class="fa fa-github fa-fw"></i> source code
-</button>
+</a>
 <hr />
 <p class="text-muted">dontpushpush.com dikuasakan oleh</p>
 <p><a href="https://www.digitalocean.com/?refcode=9951782270e6"><i class="fa fa-thumb-tack fa-fw"></i> Digital Ocean</a></p>
