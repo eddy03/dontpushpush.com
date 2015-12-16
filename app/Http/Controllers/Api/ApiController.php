@@ -59,10 +59,6 @@ class ApiController extends Controller
      */
     public function githubpush(Request $request)
     {
-        echo print_r($request, true);
-
-        return;
-
         if($request['ref'] == 'refs/heads/master') {
             SSH::run([
                 'cd /www/web/dontpushpush',
