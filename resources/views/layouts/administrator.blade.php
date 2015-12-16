@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="dontpushpush.com website">
         <meta name="author" content="eddy <eddytech03@gmail.com>">
-        <link rel="icon" href="favicon.ico">
+        <link rel="icon" href="/favicon.ico">
 
         <title>@yield('title')dontpushpush.com</title>
 
