@@ -59,7 +59,7 @@ class ApiController extends Controller
      */
     public function githubpush(Request $request)
     {
-        if($request['ref'] == 'refs/heads/master') {
+        if($request->get('ref') == 'refs/heads/master') {
             SSH::run([
                 'cd /www/web/dontpushpush',
                 'git pull',
