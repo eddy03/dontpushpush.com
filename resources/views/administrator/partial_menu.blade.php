@@ -10,9 +10,8 @@
             <li><a href=""><i class="fa fa-user fa-fw"></i> Profil</a></li>
             <li role="separator" class="divider"></li>
             <li class="dropdown-header">External Detail</li>
-            <li><a href="https://forge.laravel.com/" target="_blank"><i class="fa fa-file-code-o fa-fw"></i> Laravel Forge</a></li>
             <li><a href="https://cloud.digitalocean.com/login" target="_blank"><i class="fa fa-server fa-fw"></i> DigitalOcean</a></li>
-            <li><a href="https://sso.godaddy.com/" target="_blank"><i class="fa fa-globe fa-fw"></i> GoDaddy</a></li>
+            <li><a href="https://www.namecheap.com/" target="_blank"><i class="fa fa-globe fa-fw"></i> Namecheap</a></li>
             <li><a href="https://www.cloudflare.com/a/login" target="_blank"><i class="fa fa-exchange fa-fw"></i> Cloud Flare</a></li>
             <li><a href="https://mailgun.com/sessions/new" target="_blank"><i class="fa fa-envelope-o fa-fw"></i> MailGun</a></li>
             <li><a href="https://www.google.com/analytics/web/?hl=en" target="_blank"><i class="fa fa-area-chart fa-fw"></i> Google Analytics</a></li>
