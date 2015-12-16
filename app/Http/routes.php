@@ -9,9 +9,6 @@ Route::group(['namespace' => 'Ext'], function() {
     //Articles
     Route::get('a/{articletitle?}', ['as' => 'viewarticle', 'uses' => 'ArticleController@articles']);
 
-    //About dontpushpush.com
-    Route::get('about', ['as' => 'about', 'uses' => 'HomepageController@about']);
-
     //Login page
     Route::get('auth', ['as' => 'login', 'uses' => 'HomepageController@login']);
 
