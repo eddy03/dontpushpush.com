@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Storage;
 use File;
+use App\Document;
 
 class DocumentController extends Controller
 {
@@ -16,9 +17,9 @@ class DocumentController extends Controller
      *
      * @return Response
      */
-    public function index(Request $request)
+    public function index(Request $request, Document $document)
     {
-        $documentPath = $this->documentPath();
+        $documentPath = $document->documentPath();
         $path = public_path() . DIRECTORY_SEPARATOR . $documentPath;
         $files = File::files($path);
 
@@ -53,13 +54,13 @@ class DocumentController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Document $document)
     {
         if($request->hasFile('file')) {
 
             if($request->file('file')->isValid()) {
 
-                $request->file('file')->move($this->documentPath(), $this->generateFilename($request));
+                $request->file('file')->move($document->documentPath(), $document->generateFilename($request));
 
             }
 
@@ -108,9 +109,9 @@ class DocumentController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy($id, Document $document)
     {
-        $path = public_path() . DIRECTORY_SEPARATOR . $this->documentPath();
+        $path = public_path() . DIRECTORY_SEPARATOR . $document->documentPath();
         $filename = base64_decode($id);
 
         if(File::exists($path . $filename)) {
@@ -124,15 +125,5 @@ class DocumentController extends Controller
         else {
             return ['success' => false];
         }
-    }
-
-    private function documentPath()
-    {
-        return 'document';
-    }
-
-    private function generateFilename($request)
-    {
-        return date('d-m-Y-h-i-A') . '___' .  $request->file('file')->getClientOriginalName();
     }
 }

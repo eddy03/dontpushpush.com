@@ -19,15 +19,15 @@
                             <i class="fa fa-file-text-o fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">26</div>
+                            <div class="huge">{{ $totalarticle }}</div>
                             <div>Artikel</div>
                         </div>
                     </div>
                 </div>
                 <a href="#">
                     <div class="panel-footer">
-                        <span class="pull-left"><a href="">View Details</a></span>
-                        <span class="pull-right"><a href=""><i class="fa fa-arrow-circle-right"></i></a></span>
+                        <span class="pull-left"><a href="{{ route('administrator.article.index') }}">View Details</a></span>
+                        <span class="pull-right"><a href="{{ route('administrator.article.index') }}"><i class="fa fa-arrow-circle-right"></i></a></span>
                         <div class="clearfix"></div>
                     </div>
                 </a>
@@ -38,18 +38,18 @@
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
-                            <i class="fa fa-tasks fa-5x"></i>
+                            <i class="fa fa-files-o fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">12</div>
-                            <div>New Tasks!</div>
+                            <div class="huge">{{ $totaldocument }}</div>
+                            <div>Document</div>
                         </div>
                     </div>
                 </div>
                 <a href="#">
                     <div class="panel-footer">
-                        <span class="pull-left"><a href="">View Details</a></span>
-                        <span class="pull-right"><a href=""><i class="fa fa-arrow-circle-right"></i></a></span>
+                        <span class="pull-left"><a href="{{ route('administrator.document.index') }}">View Details</a></span>
+                        <span class="pull-right"><a href="{{ route('administrator.document.index') }}"><i class="fa fa-arrow-circle-right"></i></a></span>
                         <div class="clearfix"></div>
                     </div>
                 </a>
@@ -60,18 +60,18 @@
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
-                            <i class="fa fa-shopping-cart fa-5x"></i>
+                            <i class="fa fa-tags fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">124</div>
-                            <div>New Orders!</div>
+                            <div class="huge">{{ $totaltag }}</div>
+                            <div>Tags</div>
                         </div>
                     </div>
                 </div>
                 <a href="#">
                     <div class="panel-footer">
-                        <span class="pull-left">View Details</span>
-                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <span class="pull-left"><a href="{{ route('listtag') }}">View Details</a></span>
+                        <span class="pull-right"><a href="{{ route('listtag') }}"><i class="fa fa-arrow-circle-right"></i></a></span>
                         <div class="clearfix"></div>
                     </div>
                 </a>
@@ -82,11 +82,11 @@
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
-                            <i class="fa fa-support fa-5x"></i>
+                            <i class="fa fa-comments-o fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
                             <div class="huge">13</div>
-                            <div>Support Tickets!</div>
+                            <div>Comments</div>
                         </div>
                     </div>
                 </div>
