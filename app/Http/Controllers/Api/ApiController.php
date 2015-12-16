@@ -17,10 +17,9 @@ class ApiController extends Controller
      *
      * @return mixed
      */
-    public function highlight() {
-
+    public function highlight()
+    {
         return Article::Published()->take(4)->get();
-
     }
 
     /**
@@ -29,8 +28,8 @@ class ApiController extends Controller
      *
      * @return mixed
      */
-    public function articles() {
-
+    public function articles()
+    {
         return Article::Published()->orderBy('created_at', 'DESC')->paginate(4);
     }
 
@@ -40,18 +39,13 @@ class ApiController extends Controller
      * @param $article_title
      * @return mixed
      */
-    public function article($article_title) {
-
-        //Only published and first articles
+    public function article($article_title)
+    {
         $article = Article::Published()->where('url', $article_title)->first(array('created_at', 'updated_at', 'filename', 'subject'));
 
-        //Find the selected articles
         $article->tags;
-
-        //Get the markdown content
         $article->content = Storage::get(Article::getMarkdownDirectory() . $article->filename);
 
-        //Remove the article filename attributes
         unset($article->filename);
 
         return $article;
