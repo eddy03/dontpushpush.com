@@ -53,7 +53,6 @@ class ApiController extends Controller
 
     /**
      * Update the source code whenever any webhook POST to the given Payload URL.
-     * todo : Check the branch first. Only Master branch push event will be trigger a git pull command.
      *
      * @param Request $request
      */
