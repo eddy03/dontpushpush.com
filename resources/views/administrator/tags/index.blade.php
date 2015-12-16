@@ -10,13 +10,16 @@
         <h2>Senarai Tag</h2>
     </div>
 
-    <ul>
+    <div class="tag-list">
         @foreach($tags as $tag)
-            <li>
-                <a href="{{ route('tagdetail', $tag->id) }}">{{ $tag->tag_name }}</a>
-            </li>
+            <div class="row">
+                <div class="col-sm-12">
+                    <i class="fa fa-angle-double-right fa-fw"></i>
+                    <a href="{{ route('tagdetail', $tag->id) }}">{{ $tag->tag_name }}</a>
+                </div>
+            </div>
         @endforeach
-    </ul>
+    </div>
 @endsection
 
 @section('script')

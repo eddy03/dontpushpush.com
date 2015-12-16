@@ -10,13 +10,16 @@
         <h2>Maklumat Tag - {{ $tag->tag_name }}</h2>
     </div>
 
-    <ul>
+    <div class="tag-list">
         @foreach($tag->articles as $article)
-        <li>
-            <a href="{{ route('administrator.article.show', $article->id) }}">{{ $article->subject }}</a>
-        </li>
+            <div class="row">
+                <div class="col-sm-12">
+                    <i class="fa fa-angle-double-right fa-fw"></i>
+                    <a href="{{ route('administrator.article.show', $article->id) }}">{{ $article->subject }}</a>
+                </div>
+            </div>
         @endforeach
-    </ul>
+    </div>
 @endsection
 
 @section('script')
