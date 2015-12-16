@@ -8,7 +8,7 @@
             <meta name="description" content="dontpushpush.com website">
         @show
         <meta name="author" content="eddy <eddytech03@gmail.com>">
-        <link rel="icon" href="favicon.ico">
+        <link rel="icon" href="/favicon.ico">
 
         <title>@yield('title')dontpushpush.com</title>
 
