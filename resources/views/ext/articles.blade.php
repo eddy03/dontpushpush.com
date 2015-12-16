@@ -4,13 +4,13 @@
     <meta name="description" content="{{ $article->snippet }}">
     <meta property="og:title" content="{{ $article->subject }}"/>
     <meta property="og:type" content="article"/>
-    <meta property="og:image" content="http://www.iacquire.com/some-thumbnail.jpg"/>
+    <meta property="og:image" content="{{ $article->images }}"/>
     <meta property="og:description" content="{{ $article->snippet }}"/>
     <meta name="twitter:card" content="summary">
     <meta name="twitter:url" content="{{ URL::current() }}">
     <meta name="twitter:title" content="{{ $article->subject }}">
     <meta name="twitter:description" content="{{ $article->snippet }}">
-    <meta name="twitter:image" content="http://graphics8.nytimes.com/images/2012/02/19/us/19whitney-span/19whitney-span-articleLarge.jpg">
+    <meta name="twitter:image" content="{{ $article->images }}">
 @endsection
 
 @section('title', $article->subject . ' - ')

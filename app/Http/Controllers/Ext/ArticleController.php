@@ -19,7 +19,7 @@ class ArticleController extends Controller
         }
 
         //Only published and first articles
-        $article = Article::Published()->where('url', $articletitle)->first(array('created_at', 'updated_at', 'filename', 'subject', 'snippet'));
+        $article = Article::Published()->where('url', $articletitle)->first(array('created_at', 'updated_at', 'filename', 'subject', 'snippet', 'images'));
 
         //Find the selected articles
         $article->tags;
