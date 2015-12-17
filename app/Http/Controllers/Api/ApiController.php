@@ -61,6 +61,7 @@ class ApiController extends Controller
         if($request->get('ref') == 'refs/heads/master') {
 
             echo shell_exec('git pull');
+            echo shell_exec('git status');
 
 //            SSH::run([
 //                'cd /www/web/dontpushpush',
