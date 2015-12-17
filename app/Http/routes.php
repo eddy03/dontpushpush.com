@@ -2,7 +2,6 @@
 
 Route::get('ssh', function() {
     echo shell_exec('cd ../; sh pull.sh');
-    //echo
 });
 
 //Ext routing
