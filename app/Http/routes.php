@@ -1,15 +1,4 @@
 <?php
-
-Route::get('ssh', function() {
-    SSH::run([
-        'cd /www/web/dontpushpush',
-        'git pull',
-    ], function($line)
-    {
-        echo $line.PHP_EOL;
-    });
-});
-
 //Ext routing
 Route::group(['namespace' => 'Ext'], function() {
 

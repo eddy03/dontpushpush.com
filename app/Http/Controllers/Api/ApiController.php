@@ -61,7 +61,7 @@ class ApiController extends Controller
         if($request->get('ref') == 'refs/heads/master') {
 
             SSH::run([
-                'cd /www/web/dontpushpush',
+                'cd /www/website/dontpushpush',
                 'git pull',
             ], function($line)
             {
