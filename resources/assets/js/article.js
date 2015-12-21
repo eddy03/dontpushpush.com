@@ -250,12 +250,20 @@ $(document).ready(function() {
 
 //Delete?
 $('[data-dpp-action="trash"]').click(function() {
-    $('[name="_method"]').val('DELETE');
-    $('[name="articlesform"]').submit();
+
+    bootbox.confirm("Adakah pasti untuk memadam artikel ini.", function(result) {
+        if(result) {
+            $('[name="_method"]').val('DELETE');
+            $('[name="articlesform"]').submit();
+        }
+    });
 });
 
 //Update markdown preview content
 var updateMarkdown = function() {
     $('#preview_markdown').html(marked($('[name="markdowneditor"]').val()));
-    Prism.highlightElement($('#preview_markdown')[0]);
 };
+
+$('.preview-button').click(function() {
+    Prism.highlightAll();
+});
