@@ -9,6 +9,7 @@ use Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use SSH;
+use App\Article;
 
 /**
  * Class HomepageController
@@ -23,13 +24,11 @@ class HomepageController extends Controller
      */
     public function homepage()
     {
-        $size = 300;
-        $default = "";
-        $email = "eddytech03@gmail.com";
-        $grav_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
+        $grav_url = $this->gravatar();
 
-        return view('ext.homepage')
-            ->withGrav($grav_url);
+        $articles = Article::Published()->orderBy('created_at', 'DESC')->paginate(5);
+
+        return view('ext.homepage', compact('grav_url', 'articles'));
     }
 
     /**
@@ -55,5 +54,13 @@ class HomepageController extends Controller
         else {
             return redirect('auth');
         }
+    }
+
+    private function gravatar()
+    {
+        $size = 300;
+        $default = "";
+        $email = "eddytech03@gmail.com";
+        return "http://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
     }
 }

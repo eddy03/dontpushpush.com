@@ -11,7 +11,7 @@
         <title>@yield('title')dontpushpush.com</title>
 
         <!-- Main compiled stylesheet -->
-        <link href="{{ elixir('css/admin.css') }}" rel="stylesheet">
+        <link href="{{ elixir('administrator.css') }}" rel="stylesheet">
 
         <!-- specific page stylesheet -->
         @yield('style')
@@ -49,7 +49,7 @@
         <!-- Bootstrap core JavaScript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
-        <script src="{{ elixir('js/administrator.js') }}"></script>
+        <script src="{{ elixir('dontpushpush.js') }}"></script>
         <script>
             (function($) {
                 $.fn.getCursorPosition = function() {

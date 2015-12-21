@@ -1,7 +1,6 @@
 {
-  "css/dontpushpush.css": "css/dontpushpush-0b1adf09.css",
-  "css/admin.css": "css/admin-efce6004.css",
-  "js/app.js": "js/app-37648e2e.js",
-  "js/article.js": "js/article-37aa892b.js",
-  "js/administrator.js": "js/administrator-f6fb052e.js"
+  "administrator.css": "administrator-cd6bfa7bcd.css",
+  "article.js": "article-37aa892b7f.js",
+  "dontpushpush.css": "dontpushpush-1f2225b071.css",
+  "dontpushpush.js": "dontpushpush-cc462ce78f.js"
 }

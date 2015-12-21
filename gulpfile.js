@@ -1,52 +1,172 @@
-var elixir = require('laravel-elixir');
+var gulp = require('gulp');
+var runSequence = require('run-sequence');
+var less = require('gulp-less');
+var sourcemaps = require('gulp-sourcemaps');
+var concatCss = require('gulp-concat-css');
+var minifyCss = require('gulp-minify-css');
+var del = require('del');
+var rimraf = require('gulp-rimraf');
+var rev = require('gulp-rev');
+var uglify = require('gulp-uglify');
+var concat = require('gulp-concat');
+var livereload = require('gulp-livereload');
 
-/*
- |--------------------------------------------------------------------------
- | Elixir Asset Management
- |--------------------------------------------------------------------------
- |
- | Elixir provides a clean, fluent API for defining some basic Gulp tasks
- | for your Laravel application. By default, we are compiling the Less
- | file for our application, as well as publishing vendor resources.
- |
- */
+var appless = 'app.less';
+var adminless = 'administrator.less';
+var p_public = './public';
+var p_resource = './resources/assets';
+var p_bower = './resources/bower_components';
+var p_php = './resources/views/**/*.php';
+var p_less = p_resource + '/less';
+var p_css = p_public + '/css';
+var p_js = p_resource + '/js';
+var p_pjs = p_public + '/js';
+var p_build = p_public + '/build';
+var p_temp = p_public + '/temp';
 
-elixir(function(mix) {
-    //Compile LESS
-    mix.less('app.less')
-        .less('administrator.less')
+var bower_files = [
+    p_bower + '/jquery/dist/jquery.js',
+    p_bower + '/bootstrap/dist/js/bootstrap.js',
+    p_bower + '/headhesive/dist/headhesive.js',
+    p_bower + '/lightbox2/dist/js/lightbox.js',
+    p_bower + '/lodash/lodash.js',
+    p_bower + '/prism/prism.js',
+    p_bower + '/microplugin/src/microplugin.js',
+    p_bower + '/selectize/dist/js/selectize.js'
+];
 
-        //Copy all CSS files to desire location (resources/assets/css)
-        .copy('resources/bower_components/lightbox2/dist/css/lightbox.css', 'public/css/lightbox.css')
-        /*.copy('resources/bower_components/prism/themes/prism.css', 'public/css/prism.css')*/
+/** Stylesheet **/
+gulp.task('less', function () {
+    return gulp.src([p_less + '/' + appless, p_less + '/' + adminless])
+        .pipe(less())
+        .pipe(gulp.dest(p_css));
+});
 
-        //Copy all lightbox2 required images
-        .copy('resources/bower_components/lightbox2/dist/images', 'public/images')
+gulp.task('concatcss', function() {
+    return gulp.src([p_css + '/prism.css', p_css +'/app.css'])
+        .pipe(sourcemaps.init())
+        .pipe(concatCss('dontpushpush.css'))
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest(p_temp));
+});
 
-        //Copy all JS file to desire location (resources/assets/js)
-        .copy('resources/bower_components/jquery/dist/jquery.js', 'resources/assets/js/jquery.js')
-        .copy('resources/bower_components/bootstrap/dist/js/bootstrap.js', 'resources/assets/js/bootstrap.js')
-        .copy('resources/bower_components/headhesive/dist/headhesive.js', 'resources/assets/js/headhesive.js')
-        .copy('resources/bower_components/metisMenu/dist/metisMenu.js', 'resources/assets/js/metisMenu.js')
-        .copy('resources/bower_components/autosize/dist/autosize.js', 'resources/assets/js/autosize.js')
-        .copy('node_modules/marked/marked.min.js', 'resources/assets/js/marked.js')
-        .copy('resources/bower_components/selectize/dist/js/standalone/selectize.js', 'resources/assets/js/selectize.js')
-        .copy('resources/bower_components/lightbox2/dist/js/lightbox.js', 'resources/assets/js/lightbox.js')
-        .copy('resources/bower_components/vue/dist/vue.js', 'resources/assets/js/vue.js')
-        .copy('resources/bower_components/director/build/director.js', 'resources/assets/js/director.js')
-        .copy('resources/bower_components/bootbox.js/bootbox.js', 'resources/assets/js/bootbox.js')
-        .copy('resources/bower_components/lodash/lodash.js', 'resources/assets/js/lodash.js')
-        /*.copy('resources/bower_components/prism/prism.js', 'resources/assets/js/prism.js')*/
+gulp.task('concatadmincss', function() {
+    return gulp.src([p_css + '/prism.css', p_css + '/lightbox.css', p_css +'/administrator.css'])
+        .pipe(sourcemaps.init())
+        .pipe(concatCss('administrator.css'))
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest(p_temp));
+});
 
-        //Compile JS file according to specific user target
-        .scripts(['ie10-viewport-bug-workaround.js', 'jquery.js', 'vue.js', 'bootstrap.js', 'marked.js', 'lightbox.js', 'prism.js', 'autosize.js', 'selectize.js', 'bootbox.js', 'lodash.js'], 'public/js/administrator.js')
-        .scripts(['article.js'], 'public/js/article.js')
-        .scripts(['ie10-viewport-bug-workaround.js', 'jquery.js', 'vue.js', 'bootstrap.js', 'marked.js', 'lightbox.js', 'prism.js', 'headhesive.js', 'director.js', 'app.js'], 'public/js/app.js')
+gulp.task('minifiedcss', function() {
+    return gulp.src([p_temp + '/dontpushpush.css', p_temp + '/administrator.css'])
+        .pipe(minifyCss({keepSpecialComments: 0}))
+        .pipe(gulp.dest(p_temp));
+});
 
-        //Mixing the css files
-        .styles(['lightbox.css', 'prism.css', 'administrator.css'], 'public/css/admin.css', 'public/css')
-        .styles(['lightbox.css', 'prism.css',  'app.css'], 'public/css/dontpushpush.css', 'public/css')
+gulp.task('copycsstobuild', function() {
+    return gulp.src([p_temp + '/dontpushpush.css', p_temp + '/administrator.css'])
+        .pipe(gulp.dest(p_build));
+});
 
-        //Versioning all the files
-        .version(['css/dontpushpush.css', 'css/admin.css', 'js/app.js', 'js/article.js', 'js/administrator.js'])
+gulp.task('cleanupcss', function() {
+    del([p_css + '/app.css', p_css + '/administrator.css', p_temp]);
+});
+
+gulp.task('cssdev', function(callback) {
+    runSequence('less', ['concatcss', 'concatadmincss'], 'copycsstobuild', 'cleanupcss', callback);
+});
+
+gulp.task('css', function(callback) {
+    runSequence('less', ['concatcss', 'concatadmincss'], 'minifiedcss', 'copycsstobuild', 'cleanupcss', callback);
+});
+
+/** Javascript **/
+gulp.task('bowerjs', function() {
+    return gulp.src(bower_files)
+        .pipe(concat('bower.js'))
+        .pipe(gulp.dest(p_resource + '/js'));
+});
+
+gulp.task('concatjs', function() {
+    return gulp.src([p_resource + '/js/bower.js', p_resource + '/js/ie10-viewport-bug-workaround.js', p_resource + '/js/app.js'])
+        .pipe(concat('dontpushpush.js'))
+        .pipe(gulp.dest(p_temp));
+});
+
+gulp.task('minifiedjs', function()  {
+   return gulp.src(p_temp + '/dontpushpush.js')
+       .pipe(uglify())
+       .pipe(gulp.dest(p_temp));
+});
+
+gulp.task('copyjstobuild', function() {
+    return gulp.src(p_temp + '/dontpushpush.js')
+        .pipe(gulp.dest(p_build));
+});
+
+gulp.task('cleanupjs', function() {
+    del([p_temp, p_resource + '/js/bower.js']);
+});
+
+gulp.task('jsdev', function(callback) {
+    runSequence('bowerjs', 'concatjs', 'copyjstobuild', 'cleanupjs', callback);
+});
+
+gulp.task('js', function(callback) {
+    runSequence('bowerjs', 'concatjs', 'minifiedjs', 'copyjstobuild', 'cleanupjs', callback);
+});
+
+
+gulp.task('articlesjs', function() {
+    return gulp.src(p_resource + '/js/article.js')
+        .pipe(uglify())
+        .pipe(gulp.dest(p_build));
+});
+
+/** versioning **/
+gulp.task('deleteotherthan', function() {
+    return gulp.src(['!'+p_build+'/article.js', '!'+p_build+'/dontpushpush.js', '!'+p_build+'/dontpushpush.css', '!'+p_build+'/administrator.css', p_build + '/*.*'])
+        .pipe(rimraf());
+});
+gulp.task('versioning', ['deleteotherthan'], function() {
+    return gulp.src([p_build + '/*.*'])
+        .pipe(rev())
+        .pipe(gulp.dest(p_build))
+        .pipe(rev.manifest())
+        .pipe(gulp.dest(p_build))
+        .pipe(livereload());
+});
+
+/** clean the build directory **/
+gulp.task('cleanbuild', function() {
+    del([p_build]);
+});
+
+gulp.task('default', function(callback) {
+    runSequence('cleanbuild', 'css', 'js', 'articlesjs', 'versioning', callback);
+});
+
+gulp.task('defaultdev', function(callback) {
+    runSequence('cleanbuild', 'cssdev', 'jsdev', 'articlesjs', 'versioning', callback);
+});
+
+gulp.task('watchcss', function(callback) {
+    runSequence('cssdev', 'versioning', callback);
+});
+
+gulp.task('watchjs', function(callback) {
+    runSequence('jsdev', 'versioning', callback);
+});
+
+gulp.task('watchphp', function() {
+    return gulp.src('readme.md')
+        .pipe(livereload());
+});
+
+gulp.task('watch', function() {
+    livereload.listen();
+    gulp.watch(p_php, ['watchphp']);
+    gulp.watch(p_less + '/*.less', ['watchcss']);
+    gulp.watch(p_js + '/*.js', ['watchjs']);
 });

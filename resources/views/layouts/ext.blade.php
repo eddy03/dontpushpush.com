@@ -13,7 +13,7 @@
         <title>@yield('title')dontpushpush.com</title>
 
         <!-- Main compiled stylesheet -->
-        <link href="{{ elixir('css/dontpushpush.css') }}" rel="stylesheet">
+        <link href="{{ elixir('dontpushpush.css') }}" rel="stylesheet">
 
         <!-- specific page stylesheet -->
         @yield('style')
@@ -58,7 +58,7 @@
         <!-- Bootstrap core JavaScript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
-        <script src="{{ elixir('js/app.js') }}"></script>
+        <script src="{{ elixir('dontpushpush.js') }}"></script>
         @yield('script')
     </body>
 </html>

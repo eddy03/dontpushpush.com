@@ -17,5 +17,5 @@
 @endsection
 
 @section('script')
-    <script src="{{ elixir('js/article.js') }}"></script>
+    <script src="{{ elixir('article.js') }}"></script>
 @endsection
