@@ -1,23 +1,22 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700");
-/* http://prismjs.com/download.html?themes=prism&languages=markup+css+clike+javascript+bash+c+coffeescript+ruby+elixir+git+haml+java+less+markdown+nginx+objectivec+php+php-extras+powershell+python+sass+scss+smarty+sql+vim&plugins=line-numbers */
+/* http://prismjs.com/download.html?themes=prism-okaidia&languages=markup+css+clike+javascript+coffeescript+handlebars+jade+less+markdown+php+scss+stylus&plugins=line-highlight+line-numbers+show-language */
 
 /**
- * prism.js default theme for JavaScript, CSS and HTML
- * Based on dabblet (http://dabblet.com)
- * @author Lea Verou
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
  */
 
 code[class*="language-"],
 pre[class*="language-"] {
-  color: black;
-  text-shadow: 0 1px white;
-  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  color: #f8f8f2;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  font-family: Consolas, Monaco, 'Andale Mono', monospace;
   direction: ltr;
   text-align: left;
   white-space: pre;
   word-spacing: normal;
   word-break: normal;
-  word-wrap: normal;
   line-height: 1.5;
   -moz-tab-size: 4;
   -o-tab-size: 4;
@@ -28,40 +27,18 @@ pre[class*="language-"] {
   hyphens: none;
 }
 
-pre[class*="language-"]::-moz-selection,
-pre[class*="language-"] ::-moz-selection,
-code[class*="language-"]::-moz-selection,
-code[class*="language-"] ::-moz-selection {
-  text-shadow: none;
-  background: #b3d4fc;
-}
-
-pre[class*="language-"]::selection,
-pre[class*="language-"] ::selection,
-code[class*="language-"]::selection,
-code[class*="language-"] ::selection {
-  text-shadow: none;
-  background: #b3d4fc;
-}
-
-@media print {
-  code[class*="language-"],
-  pre[class*="language-"] {
-    text-shadow: none;
-  }
-}
-
 /* Code blocks */
 
 pre[class*="language-"] {
   padding: 1em;
   margin: .5em 0;
   overflow: auto;
+  border-radius: 0.3em;
 }
 
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-  background: #f5f2f0;
+  background: #272822;
 }
 
 /* Inline code */
@@ -79,7 +56,7 @@ pre[class*="language-"] {
 }
 
 .token.punctuation {
-  color: #999;
+  color: #f8f8f2;
 }
 
 .namespace {
@@ -88,12 +65,15 @@ pre[class*="language-"] {
 
 .token.property,
 .token.tag,
-.token.boolean,
-.token.number,
 .token.constant,
 .token.symbol,
 .token.deleted {
-  color: #905;
+  color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+  color: #ae81ff;
 }
 
 .token.selector,
@@ -102,32 +82,31 @@ pre[class*="language-"] {
 .token.char,
 .token.builtin,
 .token.inserted {
-  color: #690;
+  color: #a6e22e;
 }
 
 .token.operator,
 .token.entity,
 .token.url,
 .language-css .token.string,
-.style .token.string {
-  color: #a67f59;
-  background: hsla(0, 0%, 100%, .5);
+.style .token.string,
+.token.variable {
+  color: #f8f8f2;
 }
 
 .token.atrule,
 .token.attr-value,
-.token.keyword {
-  color: #07a;
+.token.function {
+  color: #e6db74;
 }
 
-.token.function {
-  color: #DD4A68;
+.token.keyword {
+  color: #66d9ef;
 }
 
 .token.regex,
-.token.important,
-.token.variable {
-  color: #e90;
+.token.important {
+  color: #fd971f;
 }
 
 .token.important,
@@ -141,6 +120,52 @@ pre[class*="language-"] {
 
 .token.entity {
   cursor: help;
+}
+
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+
+.line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  /* Same as .prismâ€™s padding-top */
+  background: hsla(24, 20%, 50%,.08);
+  background: -moz-linear-gradient(left, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  background: -webkit-linear-gradient(left, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  background: -o-linear-gradient(left, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  background: linear-gradient(left, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+.line-highlight:before,
+.line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+.line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
 }
 
 pre.line-numbers {
@@ -181,6 +206,24 @@ pre.line-numbers > code {
   display: block;
   padding-right: 0.8em;
   text-align: right;
+}
+
+pre[class*='language-'] {
+  position: relative;
+}
+
+pre[class*='language-'][data-language]::before {
+  content: attr(data-language);
+  color: black;
+  background-color: #CFCFCF;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 0.9em;
+  border-radius: 0 0 0 5px;
+  padding: 0 0.5em;
+  text-shadow: none;
 }
 @charset "UTF-8";
 
