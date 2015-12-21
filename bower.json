@@ -27,6 +27,8 @@
     "headhesive": "~1.2.4",
     "font-awesome": "~4.3.0",
     "metisMenu": "~2.0.2",
-    "lightbox2": "~2.8.1"
+    "lightbox2": "~2.8.1",
+    "marked": "~0.3.5",
+    "animate.css": "~3.5.0"
   }
 }
