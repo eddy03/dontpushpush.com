@@ -31,7 +31,9 @@ var bower_files = [
     p_bower + '/lightbox2/dist/js/lightbox.js',
     p_bower + '/lodash/lodash.js',
     p_bower + '/prism/prism.js',
+    p_bower + '/autosize/dist/autosize.js',
     p_bower + '/microplugin/src/microplugin.js',
+    p_bower + '/sifter/sifter.js',
     p_bower + '/selectize/dist/js/selectize.js'
 ];
 
@@ -43,7 +45,7 @@ gulp.task('less', function () {
 });
 
 gulp.task('concatcss', function() {
-    return gulp.src([p_css + '/prism.css', p_css +'/app.css'])
+    return gulp.src([p_css + '/prism.css', p_css + '/animate.css', p_css +'/app.css'])
         .pipe(sourcemaps.init())
         .pipe(concatCss('dontpushpush.css'))
         .pipe(sourcemaps.write())
@@ -51,7 +53,7 @@ gulp.task('concatcss', function() {
 });
 
 gulp.task('concatadmincss', function() {
-    return gulp.src([p_css + '/prism.css', p_css + '/lightbox.css', p_css +'/administrator.css'])
+    return gulp.src([p_css + '/prism.css', p_css + '/animate.css', p_css + '/lightbox.css', p_css +'/administrator.css'])
         .pipe(sourcemaps.init())
         .pipe(concatCss('administrator.css'))
         .pipe(sourcemaps.write())
