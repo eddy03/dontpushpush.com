@@ -4,7 +4,5 @@
 /public/document
 /storage/app/markdown
 .env
-.idea/codeStyleSettings.xml
-.idea/dictionaries/eddydyla.xml
 .idea
 nginx
