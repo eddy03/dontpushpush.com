@@ -29,12 +29,13 @@ var bower_files = [
     p_bower + '/bootstrap/dist/js/bootstrap.js',
     p_bower + '/headhesive/dist/headhesive.js',
     p_bower + '/lightbox2/dist/js/lightbox.js',
+    p_bower + '/bootbox.js/bootbox.js',
     p_bower + '/lodash/lodash.js',
-    p_bower + '/prism/prism.js',
     p_bower + '/autosize/dist/autosize.js',
     p_bower + '/microplugin/src/microplugin.js',
     p_bower + '/sifter/sifter.js',
-    p_bower + '/selectize/dist/js/selectize.js'
+    p_bower + '/selectize/dist/js/selectize.js',
+    p_bower + '/marked/lib/marked.js'
 ];
 
 /** Stylesheet **/
@@ -91,7 +92,7 @@ gulp.task('bowerjs', function() {
 });
 
 gulp.task('concatjs', function() {
-    return gulp.src([p_resource + '/js/bower.js', p_resource + '/js/ie10-viewport-bug-workaround.js', p_resource + '/js/app.js'])
+    return gulp.src([p_resource + '/js/bower.js', p_resource + '/js/prism.js', p_resource + '/js/ie10-viewport-bug-workaround.js', p_resource + '/js/app.js'])
         .pipe(concat('dontpushpush.js'))
         .pipe(gulp.dest(p_temp));
 });
@@ -154,11 +155,11 @@ gulp.task('defaultdev', function(callback) {
 });
 
 gulp.task('watchcss', function(callback) {
-    runSequence('cssdev', 'versioning', callback);
+    runSequence('cssdev', 'articlesjs', 'versioning', callback);
 });
 
 gulp.task('watchjs', function(callback) {
-    runSequence('jsdev', 'versioning', callback);
+    runSequence('jsdev', 'articlesjs', 'versioning', callback);
 });
 
 gulp.task('watchphp', function() {
