@@ -1,7 +1,7 @@
 @extends('layouts.ext')
 
 @section('content')
-    <div class="container" id="dontpushpush">
+    <div class="container">
 
         <!-- content main homepage -->
         <div class="content">
@@ -39,6 +39,8 @@
                             </a>
                         </div>
                     @endforeach
+
+                    {!! $articles->render() !!}
 
                 </div>
                 <div class="col-sm-3">
