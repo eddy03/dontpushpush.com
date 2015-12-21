@@ -34,7 +34,9 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="{{ route('dashboard') }}">dontpushpush</a>
+                    <a class="navbar-brand" href="{{ route('dashboard') }}">
+                        <span class="animated bounce">dontpushpush</span>
+                    </a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     @include('administrator.partial_menu')
