@@ -62,6 +62,9 @@ Route::group(['namespace' => 'Administrator', 'middleware' => 'auth', 'prefix' =
     //Show articles related to the tags
     Route::get('tags/{id}', ['as' => 'tagdetail', 'uses' => 'TagsController@show']);
 
+    //List all settings
+    Route::get('settings', ['as' => 'configurations', 'uses' => 'ConfigurationController@showConfigurationsOptions']);
+
     //Logout the user
     Route::get('logout', ['as' => 'logout', 'uses' => 'DashboardController@logout']);
 

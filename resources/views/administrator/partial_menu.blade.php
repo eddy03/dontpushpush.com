@@ -2,6 +2,7 @@
     <li><a href="{{ route('administrator.article.index')  }}"><i class="fa fa-file-text-o fa-fw"></i> Artikel</a></li>
     <li><a href="{{ route('administrator.document.index') }}"><i class="fa fa-files-o fa-fw"></i> Dokumen</a></li>
     <li><a href="{{ route('listtag')  }}"><i class="fa fa-tags fa-fw"></i> Tags</a></li>
+    <li><a href="{{ route('configurations') }}"><i class="fa fa-cogs fa-fw"></i> Konfigurasi</a></li>
 </ul>
 <ul class="nav navbar-nav navbar-right">
     <li class="dropdown">
