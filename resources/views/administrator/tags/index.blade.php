@@ -25,7 +25,7 @@
 @section('script')
     <script>
         $(document).ready(function() {
-            $('.topnavigation li:last').addClass('active');
+            $('.topnavigation li:nth-child(3)').addClass('active');
             $('[data-toggle="tooltip"]').tooltip()
         });
     </script>
