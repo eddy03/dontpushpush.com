@@ -1,8 +1,2 @@
-/vendor
-/node_modules
-/resources/bower_components
-/public/document
-/storage/app/markdown
-.env
 .idea
-nginx
+node_modules
