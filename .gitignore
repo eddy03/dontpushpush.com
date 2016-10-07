@@ -1,10 +1,2 @@
-/vendor
-/node_modules
-/resources/bower_components
-/public/document
-/storage/app/markdown
-.env
-.idea/codeStyleSettings.xml
-.idea/dictionaries/eddydyla.xml
 .idea
-nginx
+node_modules
