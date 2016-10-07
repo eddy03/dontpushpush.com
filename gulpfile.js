@@ -32,7 +32,6 @@ gulp.task('html', () => {
             minifyJS: true,
             removeComments: true,
             removeEmptyAttributes: true,
-            removeEmptyElements: true,
             removeOptionalTags: true,
             removeStyleLinkTypeAttributes: true,
             useShortDoctype: true
