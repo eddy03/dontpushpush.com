@@ -1,3 +1,5 @@
+'use strict';
+
 const gulp = require('gulp');
 const uglify = require('gulp-uglify');
 const concat = require('gulp-concat');
@@ -11,7 +13,7 @@ gulp.task('css', () => {
     return gulp.src('./assets/css/*css')
         .pipe(concatCSS('style.css'))
         .pipe(cleanCSS({compatibility: 'ie8'}))
-        .pipe(gulp.dest('./assets/build'));
+        .pipe(gulp.dest('./docs/assets/css'));
 
 });
 
@@ -20,7 +22,7 @@ gulp.task('script', () => {
     return gulp.src(['./assets/js/jquery.js', './assets/js/bootstrap.min.js'])
         .pipe(concat('app.js'))
         .pipe(uglify())
-        .pipe(gulp.dest('./assets/build'));
+        .pipe(gulp.dest('./docs/assets/js'));
 
 });
 
@@ -37,8 +39,36 @@ gulp.task('html', () => {
             useShortDoctype: true
         }))
         .pipe(rename('index.html'))
-        .pipe(gulp.dest('./'));
+        .pipe(gulp.dest('./docs'));
 
 });
 
-gulp.task('default', ['css', 'script', 'html']);
+gulp.task('copy_img', function() {
+
+  gulp.src('./assets/img/*')
+    .pipe(gulp.dest('./docs/assets/img'))
+
+})
+
+gulp.task('copy_fonts', function() {
+
+  gulp.src('./assets/fonts/*')
+    .pipe(gulp.dest('./docs/assets/fonts'))
+
+})
+
+gulp.task('copy_font', function() {
+
+  gulp.src('./assets/font/*')
+    .pipe(gulp.dest('./docs/assets/font'))
+
+})
+
+gulp.task('dev', ['css', 'script', 'html', 'copy_img', 'copy_fonts', 'copy_font'], function() {
+
+  gulp.watch('./index_dev.html', ['html'])
+  gulp.watch('./assets/css/main.css', ['css'])
+
+})
+
+gulp.task('build', ['css', 'script', 'html', 'copy_img', 'copy_fonts', 'copy_font']);
