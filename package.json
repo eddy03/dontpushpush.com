@@ -4,7 +4,8 @@
   "description": "Profile about dontpushpush.com - Edi Abdul Rahman - Bizsaya.com",
   "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -16,13 +17,8 @@
     "url": "https://github.com/eddy03/dontpushpush.com/issues"
   },
   "homepage": "https://github.com/eddy03/dontpushpush.com#readme",
+  "dependencies": { },
   "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-clean-css": "^2.0.13",
-    "gulp-concat": "^2.6.0",
-    "gulp-concat-css": "^2.3.0",
-    "gulp-htmlmin": "^3.0.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-uglify": "^2.0.0"
+    "live-server": "^1.2.0"
   }
 }

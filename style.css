@@ -1,0 +1,89 @@
+body {
+    /*animation: colorchange 50s; !* animation-name followed by duration in seconds*!*/
+    /*!* you could also use milliseconds (ms) or something like 2.5s *!*/
+    /*-webkit-animation: colorchange 50s; !* Chrome and Safari *!*/
+
+    background: linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%);
+    color: #000;
+}
+
+body a {
+    color: #FFF;
+}
+
+@keyframes colorchange
+{
+    0%   {
+        background: red;
+        color: #fff;
+    }
+    25%  {
+        background: yellow;
+        color: #000;
+    }
+    50%  {
+        background: blue;
+        color: #fff;
+    }
+    75%  {
+        background: green;
+        color: #fff;
+    }
+    100% {
+        background: red;
+        color: #fff;
+    }
+}
+
+@-webkit-keyframes colorchange /* Safari and Chrome - necessary duplicate */
+{
+    0%   {
+        background: red;
+        color: #fff;
+    }
+    25%  {
+        background: yellow;
+        color: #000;
+    }
+    50%  {
+        background: blue;
+        color: #fff;
+    }
+    75%  {
+        background: green;
+        color: #fff;
+    }
+    100% {
+        background: red;
+        color: #fff;
+    }
+}
+
+.full {
+    min-height: 100vh;
+}
+.full > .container {
+    padding-top: 5%;
+}
+
+.full > .container h2 {
+    margin-bottom: 0px;
+}
+
+.full > .container .location {
+    margin-bottom: 20px;
+}
+
+@media (max-width: 40.0rem) {
+    .full h2, h3, h4 {
+        text-align: center;
+    }
+
+    .full > .container {
+        padding-top: 15px;
+    }
+
+    body {
+        padding-bottom: 30px;
+    }
+}
