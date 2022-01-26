@@ -17,7 +17,7 @@
     "url": "https://github.com/eddy03/dontpushpush.com/issues"
   },
   "homepage": "https://github.com/eddy03/dontpushpush.com#readme",
-  "dependencies": { },
+  "dependencies": {},
   "devDependencies": {
     "live-server": "^1.2.0"
   }
