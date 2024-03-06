@@ -31,7 +31,7 @@ new Typed('.description', {
 var element = document.getElementById('debug');
 if (element) {
   console.debug('element found')
-  element.innerHTML = JSON.stringify(window.location.search || '')
+  element.innerHTML = window.location.search
 } else {
   console.debug('element not found')
 }
