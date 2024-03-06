@@ -29,3 +29,8 @@ new Typed('.description', {
 })
 
 console.log(window.location.search)
+
+var element = document.getElementById('debug');
+if (element) {
+  element.innerHTML = JSON.stringify(window.location.search || '')
+}
