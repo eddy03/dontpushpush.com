@@ -27,3 +27,5 @@ new Typed('.description', {
   typeSpeed: 10,
   showCursor: false
 })
+
+console.log(window.location.search)
